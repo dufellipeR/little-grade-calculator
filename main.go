@@ -1,25 +1,17 @@
 package main
 
 import (
-	"fmt"
-	"little_grade_calculator/calculator"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"little_grade_calculator/screens"
 )
 
 func main() {
+	myApp := app.New()
+	myWindow := myApp.NewWindow("Grade Calculator")
 
-	correct, wrong, total, grade := calculator.CalculateGrade("tftttttttttttttttttttttftffffffttttf")
+	screens.HomeScreen(&myWindow)
 
-	fmt.Printf("Correct answers: %d \n", correct)
-	fmt.Printf("Wrong answers: %d \n", wrong)
-	fmt.Printf("Total: %d \n", total)
-
-	fmt.Println("------------------------------------")
-	fmt.Printf("Your grade was: %d/%d \n\n", correct, total)
-	fmt.Printf("         %.2f%% \n\n", grade)
-
-	if grade >= 80 {
-		fmt.Println("🎉🎉🎉 You did! 🎉🎉🎉")
-	} else {
-		fmt.Println("You failed, try again !")
-	}
+	myWindow.Resize(fyne.Size{Width: 1280, Height: 720})
+	myWindow.ShowAndRun()
 }
